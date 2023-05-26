@@ -14,39 +14,50 @@ struct PinItem: Identifiable {
 }
 
 struct MapView: View {
-    @State private var region = MKCoordinateRegion() //座標領域
+    
+    let station: Station?
+    @State private var region = MKCoordinateRegion(  //座標領域
+        center: CLLocationCoordinate2D(latitude: 35, longitude: 135),
+        span: MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01)
+    )
     @State private var userTrackingMode: MapUserTrackingMode = .none
-    var coordinate: CLLocationCoordinate2D? //中心位置
-    var latitude: Double
-    var longitude: Double
     
     var body: some View {
         Map(
             coordinateRegion: $region,
-            interactionModes: .all,
             showsUserLocation: true,
             userTrackingMode: $userTrackingMode,
-            annotationItems: [
-                PinItem(coordinate: .init(latitude: latitude, longitude: longitude))
-            ],
-            annotationContent: { item in
-                MapMarker(coordinate: item.coordinate)
-            }
-        )
+            annotationItems: generatePinItem()
+        ) { item in
+            MapMarker(coordinate: item.coordinate)
+        }
         .onAppear {
-            setRegion(coordinate: CLLocationCoordinate2D(latitude: latitude, longitude: longitude))
+            setTargetRegion()
         }
     }
 }
 
 extension MapView {
-    private func setRegion(coordinate: CLLocationCoordinate2D) {
-        region = MKCoordinateRegion(center: coordinate, span: MKCoordinateSpan(latitudeDelta: 0.0009, longitudeDelta: 0.0009))
+    private func generatePinItem() -> [PinItem] {
+        guard let station = station else {
+            return []
+        }
+        return [PinItem(coordinate: CLLocationCoordinate2D(latitude: station.y, longitude: station.x))]
+    }
+    
+    private func setTargetRegion() {
+        guard let station = station else {
+            //stationがnilならば広域の表示にする
+            region.span = MKCoordinateSpan(latitudeDelta: 30, longitudeDelta: 30)
+            return
+        }
+        //マップの中央を移動
+        region.center = CLLocationCoordinate2D(latitude: station.y, longitude: station.x)
     }
 }
 
 struct MapView_Previews: PreviewProvider {
     static var previews: some View {
-        MapView(latitude: 35, longitude: 135)
+        MapView(station: mockStationData[0])
     }
 }
