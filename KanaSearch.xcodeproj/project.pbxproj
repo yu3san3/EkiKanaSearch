@@ -15,7 +15,7 @@
 		EB1514CA2A211B3B00E39014 /* NearbyStationData.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB1514C92A211B3B00E39014 /* NearbyStationData.swift */; };
 		EB1514CC2A211EEB00E39014 /* NearbyStationFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB1514CB2A211EEB00E39014 /* NearbyStationFetcher.swift */; };
 		EB1514CE2A211F2500E39014 /* APIError.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB1514CD2A211F2500E39014 /* APIError.swift */; };
-		EB1514D32A21218700E39014 /* StationListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB1514D22A21218700E39014 /* StationListViewModel.swift */; };
+		EB1514D32A21218700E39014 /* ContentViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB1514D22A21218700E39014 /* ContentViewModel.swift */; };
 		EB1514D62A21228200E39014 /* StationListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB1514D52A21228200E39014 /* StationListView.swift */; };
 /* End PBXBuildFile section */
 
@@ -30,7 +30,7 @@
 		EB1514C92A211B3B00E39014 /* NearbyStationData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NearbyStationData.swift; sourceTree = "<group>"; };
 		EB1514CB2A211EEB00E39014 /* NearbyStationFetcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NearbyStationFetcher.swift; sourceTree = "<group>"; };
 		EB1514CD2A211F2500E39014 /* APIError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIError.swift; sourceTree = "<group>"; };
-		EB1514D22A21218700E39014 /* StationListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StationListViewModel.swift; sourceTree = "<group>"; };
+		EB1514D22A21218700E39014 /* ContentViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentViewModel.swift; sourceTree = "<group>"; };
 		EB1514D52A21228200E39014 /* StationListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StationListView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -114,7 +114,7 @@
 		EB1514D42A21219E00E39014 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
-				EB1514D22A21218700E39014 /* StationListViewModel.swift */,
+				EB1514D22A21218700E39014 /* ContentViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -194,7 +194,7 @@
 				EB1514C82A21063100E39014 /* MapView.swift in Sources */,
 				EB1514CC2A211EEB00E39014 /* NearbyStationFetcher.swift in Sources */,
 				EB1514B92A20DC9C00E39014 /* KanaSearchApp.swift in Sources */,
-				EB1514D32A21218700E39014 /* StationListViewModel.swift in Sources */,
+				EB1514D32A21218700E39014 /* ContentViewModel.swift in Sources */,
 				EB1514CA2A211B3B00E39014 /* NearbyStationData.swift in Sources */,
 				EB1514CE2A211F2500E39014 /* APIError.swift in Sources */,
 			);

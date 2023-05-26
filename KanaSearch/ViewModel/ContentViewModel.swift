@@ -7,7 +7,7 @@
 
 import Foundation
 
-final class StationListViewModel: ObservableObject {
+final class ContentViewModel: ObservableObject {
     @Published var stationData: [Station] = []
     
     @Published var shouldShowLoadingIndicator: Bool = false
