@@ -11,6 +11,7 @@
 		EB1514BB2A20DC9C00E39014 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB1514BA2A20DC9C00E39014 /* ContentView.swift */; };
 		EB1514BD2A20DCA000E39014 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EB1514BC2A20DCA000E39014 /* Assets.xcassets */; };
 		EB1514C12A20DCA000E39014 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EB1514C02A20DCA000E39014 /* Preview Assets.xcassets */; };
+		EB1514C82A21063100E39014 /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB1514C72A21063100E39014 /* MapView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -20,6 +21,7 @@
 		EB1514BC2A20DCA000E39014 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		EB1514BE2A20DCA000E39014 /* KanaSearch.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = KanaSearch.entitlements; sourceTree = "<group>"; };
 		EB1514C02A20DCA000E39014 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		EB1514C72A21063100E39014 /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,6 +56,7 @@
 			children = (
 				EB1514B82A20DC9C00E39014 /* KanaSearchApp.swift */,
 				EB1514BA2A20DC9C00E39014 /* ContentView.swift */,
+				EB1514C72A21063100E39014 /* MapView.swift */,
 				EB1514BC2A20DCA000E39014 /* Assets.xcassets */,
 				EB1514BE2A20DCA000E39014 /* KanaSearch.entitlements */,
 				EB1514BF2A20DCA000E39014 /* Preview Content */,
@@ -140,6 +143,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				EB1514BB2A20DC9C00E39014 /* ContentView.swift in Sources */,
+				EB1514C82A21063100E39014 /* MapView.swift in Sources */,
 				EB1514B92A20DC9C00E39014 /* KanaSearchApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
