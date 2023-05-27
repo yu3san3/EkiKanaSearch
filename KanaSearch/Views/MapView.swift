@@ -17,7 +17,7 @@ struct MapView: View {
     
     let station: Station?
     
-    @StateObject var contentVM = ContentViewModel()
+    @ObservedObject var contentVM: ContentViewModel
     
     @State private var userTrackingMode: MapUserTrackingMode = .none
     
@@ -55,8 +55,8 @@ extension MapView {
     }
 }
 
-//struct MapView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        MapView(station: mockStationData[0], region: )
-//    }
-//}
+struct MapView_Previews: PreviewProvider {
+    static var previews: some View {
+        MapView(station: mockStationData[0], contentVM: ContentViewModel())
+    }
+}

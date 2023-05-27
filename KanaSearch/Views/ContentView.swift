@@ -15,7 +15,7 @@ struct ContentView: View {
     
     var body: some View {
         ZStack {
-            MapView(station: nil)
+            MapView(station: nil, contentVM: contentVM)
             VStack {
                 searchButton
                 currentLocationButton
