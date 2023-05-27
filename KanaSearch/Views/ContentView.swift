@@ -13,13 +13,13 @@ struct ContentView: View {
     
     var body: some View {
         MapView(station: nil)
-            .ignoresSafeArea()
             .sheet(isPresented: $shouldShowSheet) {
                 StationListView(stationData: mockStationData)
-                    .presentationDetents([.medium, .large])
+                    .presentationDetents([.height(50), .medium, .large])
                     .presentationBackgroundInteraction(.enabled)
                     .interactiveDismissDisabled()
             }
+            .ignoresSafeArea()
     }
 }
 

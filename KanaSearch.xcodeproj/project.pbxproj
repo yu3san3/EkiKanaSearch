@@ -17,6 +17,7 @@
 		EB1514CE2A211F2500E39014 /* APIError.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB1514CD2A211F2500E39014 /* APIError.swift */; };
 		EB1514D32A21218700E39014 /* ContentViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB1514D22A21218700E39014 /* ContentViewModel.swift */; };
 		EB1514D62A21228200E39014 /* StationListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB1514D52A21228200E39014 /* StationListView.swift */; };
+		EB5855302A223F4100E50187 /* SheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB58552F2A223F4100E50187 /* SheetView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +33,7 @@
 		EB1514CD2A211F2500E39014 /* APIError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIError.swift; sourceTree = "<group>"; };
 		EB1514D22A21218700E39014 /* ContentViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentViewModel.swift; sourceTree = "<group>"; };
 		EB1514D52A21228200E39014 /* StationListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StationListView.swift; sourceTree = "<group>"; };
+		EB58552F2A223F4100E50187 /* SheetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SheetView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -105,6 +107,7 @@
 			isa = PBXGroup;
 			children = (
 				EB1514BA2A20DC9C00E39014 /* ContentView.swift */,
+				EB58552F2A223F4100E50187 /* SheetView.swift */,
 				EB1514C72A21063100E39014 /* MapView.swift */,
 				EB1514D52A21228200E39014 /* StationListView.swift */,
 			);
@@ -190,6 +193,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				EB1514BB2A20DC9C00E39014 /* ContentView.swift in Sources */,
+				EB5855302A223F4100E50187 /* SheetView.swift in Sources */,
 				EB1514D62A21228200E39014 /* StationListView.swift in Sources */,
 				EB1514C82A21063100E39014 /* MapView.swift in Sources */,
 				EB1514CC2A211EEB00E39014 /* NearbyStationFetcher.swift in Sources */,
