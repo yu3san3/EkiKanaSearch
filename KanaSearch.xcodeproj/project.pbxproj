@@ -107,8 +107,8 @@
 			isa = PBXGroup;
 			children = (
 				EB1514BA2A20DC9C00E39014 /* ContentView.swift */,
-				EB58552F2A223F4100E50187 /* SheetView.swift */,
 				EB1514C72A21063100E39014 /* MapView.swift */,
+				EB58552F2A223F4100E50187 /* SheetView.swift */,
 				EB1514D52A21228200E39014 /* StationListView.swift */,
 			);
 			path = Views;

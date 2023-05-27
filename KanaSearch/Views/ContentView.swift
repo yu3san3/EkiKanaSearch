@@ -12,14 +12,16 @@ struct ContentView: View {
     @State private var shouldShowSheet: Bool = true
     
     var body: some View {
-        MapView(station: nil)
-            .sheet(isPresented: $shouldShowSheet) {
-                StationListView(stationData: mockStationData)
-                    .presentationDetents([.height(50), .medium, .large])
-                    .presentationBackgroundInteraction(.enabled)
-                    .interactiveDismissDisabled()
-            }
-            .ignoresSafeArea()
+        ZStack {
+            MapView(station: nil)
+        }
+        .sheet(isPresented: $shouldShowSheet) {
+            SheetView()
+                .presentationDetents([.height(65), .medium, .large])
+                .presentationBackgroundInteraction(.enabled)
+                .interactiveDismissDisabled()
+        }
+        .ignoresSafeArea()
     }
 }
 

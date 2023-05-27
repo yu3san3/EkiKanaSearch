@@ -7,9 +7,35 @@
 
 import SwiftUI
 
+
+enum SearchType: String, CaseIterable, Identifiable {
+    case station = "駅名検索"
+    case town = "地名検索"
+    var id: Self { self }
+}
+
 struct SheetView: View {
+    
+    @State private var selectedSearchType: SearchType = .station
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        VStack(spacing: 0) {
+            searchTypePicker
+            StationListView(stationData: mockStationData)
+        }
+    }
+}
+
+private extension SheetView {
+    var searchTypePicker: some View {
+        Picker("SearchType", selection: $selectedSearchType) {
+            ForEach(SearchType.allCases) { searchType in
+                Text(searchType.rawValue)
+            }
+        }
+        .pickerStyle(.segmented)
+        .padding()
+        .background(Color(UIColor.secondarySystemBackground))
     }
 }
 
