@@ -9,9 +9,10 @@ import Foundation
 
 final class NearbyStationFetcher {
     
-    let url = URL(string: "https://express.heartrails.com/api/json?method=getStations&x=135.0&y=35.0")!
-    
-    func fetchCityData() async throws -> [Station] {
+    func fetchCityData(latitude: Double, longitude: Double) async throws -> [Station] {
+        
+        let url = URL(string: "https://express.heartrails.com/api/json?method=getStations&x=\(longitude)&y=\(latitude)")!
+        
         let (data, response) = try await URLSession.shared.data(from: url)
         
         guard let httpResponse = response as? HTTPURLResponse else {
@@ -22,6 +23,7 @@ final class NearbyStationFetcher {
         case 200:
             do {
                 let resultData = try JSONDecoder().decode(NearbyStationData.self, from: data)
+                print("success!! \(resultData)")
                 return resultData.response.station
             } catch {
                 print("error")

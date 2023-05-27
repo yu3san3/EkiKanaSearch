@@ -6,9 +6,15 @@
 //
 
 import Foundation
+import MapKit
 
 final class ContentViewModel: ObservableObject {
     @Published var stationData: [Station] = []
+    
+    @Published var region = MKCoordinateRegion(  //座標領域
+        center: CLLocationCoordinate2D(latitude: 35.4127, longitude: 138.2740),
+        span: MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01)
+    )
     
     @Published var shouldShowLoadingIndicator: Bool = false
     @Published var shouldShowAlert: Bool = false
@@ -24,7 +30,8 @@ final class ContentViewModel: ObservableObject {
             }
             
             do {
-                stationData = try await nearbyStationFetcher.fetchCityData()
+                stationData = try await nearbyStationFetcher.fetchCityData(latitude: region.center.latitude, longitude: region.center.longitude)
+                print("stationData: \(stationData), region: \(region.center.latitude)")
             } catch {
                 if let apiError = error as? APIError {
                     self.error = apiError

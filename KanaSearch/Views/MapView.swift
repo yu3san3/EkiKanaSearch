@@ -16,15 +16,14 @@ struct PinItem: Identifiable {
 struct MapView: View {
     
     let station: Station?
-    @State private var region = MKCoordinateRegion(  //座標領域
-        center: CLLocationCoordinate2D(latitude: 35.4127, longitude: 138.2740),
-        span: MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01)
-    )
+    
+    @StateObject var contentVM = ContentViewModel()
+    
     @State private var userTrackingMode: MapUserTrackingMode = .none
     
     var body: some View {
         Map(
-            coordinateRegion: $region,
+            coordinateRegion: $contentVM.region,
             showsUserLocation: true,
             userTrackingMode: $userTrackingMode,
             annotationItems: generatePinItem()
@@ -48,16 +47,16 @@ extension MapView {
     private func setTargetRegion() {
         guard let station = station else {
             //stationがnilならば広域の表示にする
-            region.span = MKCoordinateSpan(latitudeDelta: 30, longitudeDelta: 30)
+            contentVM.region.span = MKCoordinateSpan(latitudeDelta: 30, longitudeDelta: 30)
             return
         }
         //マップの中央を移動
-        region.center = CLLocationCoordinate2D(latitude: station.y, longitude: station.x)
+        contentVM.region.center = CLLocationCoordinate2D(latitude: station.y, longitude: station.x)
     }
 }
 
-struct MapView_Previews: PreviewProvider {
-    static var previews: some View {
-        MapView(station: mockStationData[0])
-    }
-}
+//struct MapView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        MapView(station: mockStationData[0], region: )
+//    }
+//}

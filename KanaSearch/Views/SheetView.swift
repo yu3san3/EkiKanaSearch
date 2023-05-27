@@ -16,12 +16,14 @@ enum SearchType: String, CaseIterable, Identifiable {
 
 struct SheetView: View {
     
+    let stationData: [Station]
+    
     @State private var selectedSearchType: SearchType = .station
     
     var body: some View {
         VStack(spacing: 0) {
             searchTypePicker
-            StationListView(stationData: mockStationData)
+            StationListView(stationData: stationData)
         }
     }
 }
@@ -41,6 +43,6 @@ private extension SheetView {
 
 struct SheetView_Previews: PreviewProvider {
     static var previews: some View {
-        SheetView()
+        SheetView(stationData: mockStationData)
     }
 }

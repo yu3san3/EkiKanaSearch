@@ -9,19 +9,55 @@ import SwiftUI
 
 struct ContentView: View {
     
+    @StateObject var contentVM = ContentViewModel()
+    
     @State private var shouldShowSheet: Bool = true
     
     var body: some View {
         ZStack {
             MapView(station: nil)
+            VStack {
+                searchButton
+                currentLocationButton
+            }
         }
+        .ignoresSafeArea()
         .sheet(isPresented: $shouldShowSheet) {
-            SheetView()
+            SheetView(stationData: contentVM.stationData)
                 .presentationDetents([.height(65), .medium, .large])
                 .presentationBackgroundInteraction(.enabled)
                 .interactiveDismissDisabled()
         }
-        .ignoresSafeArea()
+        .alert(isPresented: $contentVM.shouldShowAlert, error: contentVM.error) { _ in
+            Button("OK", action: {})
+        } message: { error in
+            Text(error.errorDescription ?? "nil")
+        }
+    }
+}
+
+private extension ContentView {
+    var searchButton: some View {
+        Button(action: {
+            contentVM.fetchStationData()
+            print("region: \(contentVM.region)")
+        }) {
+            Text("周辺を検索")
+        }
+        .padding(10)
+        .background(Color(UIColor.secondarySystemBackground))
+        .cornerRadius(30)
+    }
+    
+    var currentLocationButton: some View {
+        Button(action: {
+            
+        }) {
+            Image(systemName: "location")
+        }
+        .padding(10)
+        .background(Color(UIColor.secondarySystemBackground))
+        .cornerRadius(30)
     }
 }
 
