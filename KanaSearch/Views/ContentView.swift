@@ -8,14 +8,18 @@
 import SwiftUI
 
 struct ContentView: View {
+    
+    @State private var shouldShowSheet: Bool = true
+    
     var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundColor(.accentColor)
-            Text("Hello, world!")
-        }
-        .padding()
+        MapView(station: nil)
+            .ignoresSafeArea()
+            .sheet(isPresented: $shouldShowSheet) {
+                StationListView(stationData: mockStationData)
+                    .presentationDetents([.medium, .large])
+                    .presentationBackgroundInteraction(.enabled)
+                    .interactiveDismissDisabled()
+            }
     }
 }
 

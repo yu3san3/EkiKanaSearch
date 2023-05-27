@@ -17,7 +17,7 @@ struct MapView: View {
     
     let station: Station?
     @State private var region = MKCoordinateRegion(  //座標領域
-        center: CLLocationCoordinate2D(latitude: 35, longitude: 135),
+        center: CLLocationCoordinate2D(latitude: 35.4127, longitude: 138.2740),
         span: MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01)
     )
     @State private var userTrackingMode: MapUserTrackingMode = .none
