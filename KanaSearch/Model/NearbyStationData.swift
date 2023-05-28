@@ -19,7 +19,8 @@ struct NearbyStationResponse: Codable {
     let station: [Station]
 }
 
-struct Station: Codable {
+struct Station: Codable, Identifiable {
+    let id = UUID()
     let name: String
     let prefecture: String
     let line: String
@@ -28,6 +29,17 @@ struct Station: Codable {
     let distance: String
     let prev: String?
     let next: String?
+    
+    enum CodingKeys: String, CodingKey {
+        case name
+        case prefecture
+        case line
+        case x
+        case y
+        case distance
+        case prev
+        case next
+    }
 }
 
 let mockStationData: [Station] = [

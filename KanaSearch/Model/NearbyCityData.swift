@@ -23,7 +23,8 @@ struct NearbyCityResponse: Codable {
     }
 }
 
-struct Location: Codable {
+struct Location: Codable, Identifiable {
+    let id = UUID()
     let city: String
     let cityKana: String
     let town: String
