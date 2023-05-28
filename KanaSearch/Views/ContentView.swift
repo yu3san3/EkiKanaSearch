@@ -40,6 +40,7 @@ private extension ContentView {
     var searchButton: some View {
         Button(action: {
             contentVM.fetchStationData()
+            contentVM.fetchCityData()
         }) {
             Text("周辺を検索")
         }

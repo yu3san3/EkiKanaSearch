@@ -1,17 +1,17 @@
 //
-//  NearbyStationFetcher.swift
+//  NearbyCityDataFetcher.swift
 //  KanaSearch
 //
-//  Created by 丹羽雄一朗 on 2023/05/27.
+//  Created by 丹羽雄一朗 on 2023/05/28.
 //
 
 import Foundation
 
-final class NearbyStationDataFetcher {
+final class NearbyCityDataFetcher {
     
-    func fetchStationData(latitude: Double, longitude: Double) async throws -> [Station] {
+    func fetchCityData(latitude: Double, longitude: Double) async throws -> [Location] {
         
-        let url = URL(string: "https://express.heartrails.com/api/json?method=getStations&x=\(longitude)&y=\(latitude)")!
+        let url = URL(string: "https://geoapi.heartrails.com/api/json?method=searchByGeoLocation&x=\(longitude)&y=\(latitude)")!
         
         let (data, response) = try await URLSession.shared.data(from: url)
         
@@ -22,8 +22,8 @@ final class NearbyStationDataFetcher {
         switch httpResponse.statusCode {
         case 200:
             do {
-                let resultData = try JSONDecoder().decode(NearbyStationData.self, from: data)
-                return resultData.nearbyStationResponse.station
+                let resultData = try JSONDecoder().decode(NearbyCityData.self, from: data)
+                return resultData.nearbyCityResponse.location
             } catch {
                 throw APIError.jsonDecode
             }

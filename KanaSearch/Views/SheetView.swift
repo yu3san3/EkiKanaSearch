@@ -7,13 +7,6 @@
 
 import SwiftUI
 
-
-enum SearchType: String, CaseIterable, Identifiable {
-    case station = "駅名検索"
-    case town = "地名検索"
-    var id: Self { self }
-}
-
 struct SheetView: View {
     
     @ObservedObject var contentVM: ContentViewModel
@@ -21,7 +14,13 @@ struct SheetView: View {
     var body: some View {
         VStack(spacing: 0) {
             searchTypePicker
-            StationListView(stationData: contentVM.stationData)
+            let _ = print(contentVM.stationData)
+            switch contentVM.selectedSearchType {
+            case .station:
+                StationListView(stationData: contentVM.stationData)
+            case .town:
+                CityListView(cityData: contentVM.cityData)
+            }
         }
     }
 }

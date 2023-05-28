@@ -38,3 +38,11 @@ struct Location: Codable {
         case prefecture
     }
 }
+
+let mockCityData: [Location] = [
+    Location(city: "西脇市", cityKana: "にしわきし", town: "上比延町", townKana: "かみひえちょう", prefecture: "兵庫県"),
+    Location(city: "西脇市", cityKana: "にしわきし", town: "比延町", townKana: "ひえちょう", prefecture: "兵庫県"),
+    Location(city: "西脇市", cityKana: "にしわきし", town: "大垣内", townKana: "おおがち", prefecture: "兵庫県"),
+    Location(city: "西脇市", cityKana: "にしわきし", town: "嶋", townKana: "しま", prefecture: "兵庫県"),
+    Location(city: "西脇市", cityKana: "にしわきし", town: "寺内", townKana: "てらうち", prefecture: "兵庫県")
+]
