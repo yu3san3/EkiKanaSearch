@@ -31,12 +31,10 @@ final class ContentViewModel: ObservableObject {
             shouldShowLoadingIndicator = true
             defer {
                 shouldShowLoadingIndicator = false
-                print("func end, stationData: \(stationData)")
             }
             
             do {
                 stationData = try await nearbyStationDataFetcher.fetchNearbyStationData(latitude: region.center.latitude, longitude: region.center.longitude)
-                print("stationData: \(stationData)")
             } catch {
                 if let apiError = error as? APIError {
                     print(error)

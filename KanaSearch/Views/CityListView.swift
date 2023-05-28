@@ -12,8 +12,16 @@ struct CityListView: View {
     let cityData: [Location]
     
     var body: some View {
+        if cityData.isEmpty {
+            EmptyView()
+        }
         List(cityData, id: \.town) { city in
-            Text(city.town)
+            VStack(alignment: .leading) {
+                Text("\(city.prefecture)\(city.city) \(city.town)")
+                    .bold()
+                Text("\(String(format: "%.0f", city.distance))m \(city.cityKana) \(city.townKana)")
+                    .font(.caption)
+            }
         }
     }
 }

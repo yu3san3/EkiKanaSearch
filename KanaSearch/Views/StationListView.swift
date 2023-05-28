@@ -12,8 +12,16 @@ struct StationListView: View {
     let stationData: [Station]
     
     var body: some View {
+        if stationData.isEmpty {
+            EmptyView()
+        }
         List(stationData, id: \.name) { station in
-            Text(station.name)
+            VStack(alignment: .leading) {
+                Text("\(station.name)駅")
+                    .bold()
+                Text("\(station.distance) \(station.line)")
+                    .font(.callout)
+            }
         }
     }
 }
