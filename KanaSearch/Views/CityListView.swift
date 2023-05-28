@@ -15,7 +15,7 @@ struct CityListView: View {
         if cityData.isEmpty {
             EmptyView()
         }
-        List(cityData) { city in
+        ForEach(cityData) { city in
             VStack(alignment: .leading) {
                 Text("\(city.prefecture)\(city.city) \(city.town)")
                     .bold()

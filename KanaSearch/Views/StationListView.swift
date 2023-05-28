@@ -15,7 +15,7 @@ struct StationListView: View {
         if stationData.isEmpty {
             EmptyView()
         }
-        List(stationData) { station in
+        ForEach(stationData) { station in
             VStack(alignment: .leading) {
                 HStack(spacing: 0) {
                     if station.line.contains("新幹線") {

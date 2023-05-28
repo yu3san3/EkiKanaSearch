@@ -28,7 +28,7 @@ struct ContentView: View {
         }
         .sheet(isPresented: $shouldShowSheet) {
             SheetView(contentVM: contentVM)
-                .presentationDetents([.height(65), .medium, .large]) //sheetのサイズを指定
+                .presentationDetents([.height(80), .medium, .large]) //sheetのサイズを指定
                 .presentationContentInteraction(.scrolls) //sheetのリサイズよりListのスクロールを優先
                 .presentationBackgroundInteraction(.enabled) //sheetの背景ビューの操作を許可
                 .interactiveDismissDisabled() //Dismissを制限
@@ -46,6 +46,7 @@ private extension ContentView {
         Button(action: {
             contentVM.fetchStationData()
             contentVM.fetchCityData()
+            contentVM.regeocoding(latitude: contentVM.region.center.latitude, longitude: contentVM.region.center.longitude)
         }) {
             Text("周辺を検索")
         }

@@ -13,6 +13,7 @@ final class ContentViewModel: ObservableObject {
     @Published var stationData: [Station] = []
     @Published var cityData: [Location] = []
     @Published var selectedSearchType: SearchType = .station
+    @Published var addressOfSpecifiedLocation: (postalCode: String, adress: String) = (postalCode: "", adress: "") //指定された場所の住所
     
     @Published var region = MKCoordinateRegion(  //座標領域
         center: CLLocationCoordinate2D(latitude: 35.4127, longitude: 138.2740),
@@ -71,6 +72,26 @@ final class ContentViewModel: ObservableObject {
                     print(error.localizedDescription)
                 }
             }
+        }
+    }
+    
+    func regeocoding(latitude: Double, longitude: Double) {
+        let location = CLLocation(latitude: latitude, longitude: longitude)
+        
+        let geocoder = CLGeocoder()
+        geocoder.reverseGeocodeLocation(location) { placemarks, error in
+            guard let placemark = placemarks?.first, error == nil,
+                  let administrativeArea = placemark.administrativeArea, // 都道府県
+                  let locality = placemark.locality, // 市区町村
+                  let thoroughfare = placemark.thoroughfare, // 地名(丁目)
+                  let subThoroughfare = placemark.subThoroughfare, // 番地
+                  let postalCode = placemark.postalCode // 郵便番号
+            else {
+                self.addressOfSpecifiedLocation = (postalCode: "", adress: "住所がありません")
+                return
+            }
+            self.addressOfSpecifiedLocation.postalCode = postalCode
+            self.addressOfSpecifiedLocation.adress = "\(administrativeArea)\(locality)\(thoroughfare)\(subThoroughfare)"
         }
     }
 }
