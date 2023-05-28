@@ -19,13 +19,11 @@ struct MapView: View {
     
     @ObservedObject var contentVM: ContentViewModel
     
-    @State private var userTrackingMode: MapUserTrackingMode = .none
-    
     var body: some View {
         Map(
             coordinateRegion: $contentVM.region,
             showsUserLocation: true,
-            userTrackingMode: $userTrackingMode,
+            userTrackingMode: $contentVM.userTrackingMode,
             annotationItems: generatePinItem()
         ) { item in
             MapMarker(coordinate: item.coordinate)
@@ -46,8 +44,6 @@ extension MapView {
     
     private func setTargetRegion() {
         guard let station = station else {
-            //stationがnilならば広域の表示にする
-            contentVM.region.span = MKCoordinateSpan(latitudeDelta: 30, longitudeDelta: 30)
             return
         }
         //マップの中央を移動

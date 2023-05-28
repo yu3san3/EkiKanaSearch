@@ -5,7 +5,7 @@
 //  Created by 丹羽雄一朗 on 2023/05/27.
 //
 
-import Foundation
+import SwiftUI
 import MapKit
 
 final class ContentViewModel: ObservableObject {
@@ -16,9 +16,10 @@ final class ContentViewModel: ObservableObject {
     @Published var addressOfSpecifiedLocation: (postalCode: String, adress: String) = (postalCode: "", adress: "") //指定された場所の住所
     
     @Published var region = MKCoordinateRegion(  //座標領域
-        center: CLLocationCoordinate2D(latitude: 35.4127, longitude: 138.2740),
+        center: CLLocationCoordinate2D(latitude: 35.6814, longitude: 139.7657),
         span: MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01)
     )
+    @Published var userTrackingMode: MapUserTrackingMode = .none
     
     @Published var shouldShowLoadingIndicator: Bool = false
     @Published var shouldShowAlert: Bool = false

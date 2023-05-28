@@ -6,6 +6,7 @@
 //
 //  2023/05/29 Alpha 1.0.0(1)
 //             Alpha 1.0.1(2)
+//             Alpha 1.1.0(3)
 
 import SwiftUI
 
@@ -17,6 +18,8 @@ let appBuildNum = Bundle.main.infoDictionary!["CFBundleVersion"] as! String
 struct ContentView: View {
     
     @StateObject var contentVM = ContentViewModel()
+    
+    @StateObject var locationManager = LocationManager()
     
     @State private var shouldShowSheet: Bool = true
     
@@ -40,6 +43,11 @@ struct ContentView: View {
                 .presentationBackgroundInteraction(.enabled) //sheetの背景ビューの操作を許可
                 .interactiveDismissDisabled() //Dismissを制限
         }
+//        .task(id: locationManager.location) {
+//            withAnimation {
+//                contentVM.region.center = locationManager.location.coordinate
+//            }
+//        }
         .alert(isPresented: $contentVM.shouldShowAlert, error: contentVM.error) { _ in
             Button("OK", action: {})
         } message: { error in
@@ -71,7 +79,9 @@ private extension ContentView {
     
     var currentLocationButton: some View {
         Button(action: {
-            
+            withAnimation {
+                contentVM.region.center = locationManager.location.coordinate
+            }
         }) {
             Image(systemName: "location")
         }

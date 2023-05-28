@@ -22,6 +22,7 @@
 		EB5855362A23300500E50187 /* NearbyCityDataFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB5855352A23300500E50187 /* NearbyCityDataFetcher.swift */; };
 		EB5855382A23344700E50187 /* CityListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB5855372A23344700E50187 /* CityListView.swift */; };
 		EB58553A2A23363C00E50187 /* SearchType.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB5855392A23363C00E50187 /* SearchType.swift */; };
+		EB58553E2A23C0DF00E50187 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB58553D2A23C0DF00E50187 /* LocationManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -42,6 +43,7 @@
 		EB5855352A23300500E50187 /* NearbyCityDataFetcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NearbyCityDataFetcher.swift; sourceTree = "<group>"; };
 		EB5855372A23344700E50187 /* CityListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityListView.swift; sourceTree = "<group>"; };
 		EB5855392A23363C00E50187 /* SearchType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchType.swift; sourceTree = "<group>"; };
+		EB58553D2A23C0DF00E50187 /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,6 +101,7 @@
 			children = (
 				EB1514CB2A211EEB00E39014 /* NearbyStationDataFetcher.swift */,
 				EB5855352A23300500E50187 /* NearbyCityDataFetcher.swift */,
+				EB58553D2A23C0DF00E50187 /* LocationManager.swift */,
 				EB5855392A23363C00E50187 /* SearchType.swift */,
 				EB1514CD2A211F2500E39014 /* APIError.swift */,
 			);
@@ -214,6 +217,7 @@
 				EB1514B92A20DC9C00E39014 /* KanaSearchApp.swift in Sources */,
 				EB1514D32A21218700E39014 /* ContentViewModel.swift in Sources */,
 				EB5855382A23344700E50187 /* CityListView.swift in Sources */,
+				EB58553E2A23C0DF00E50187 /* LocationManager.swift in Sources */,
 				EB58553A2A23363C00E50187 /* SearchType.swift in Sources */,
 				EB1514CA2A211B3B00E39014 /* NearbyStationData.swift in Sources */,
 				EB1514CE2A211F2500E39014 /* APIError.swift in Sources */,
@@ -339,13 +343,14 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = KanaSearch/KanaSearch.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_ASSET_PATHS = "\"KanaSearch/Preview Content\"";
 				DEVELOPMENT_TEAM = CZNP3969US;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_CFBundleDisplayName = "かなサーチ";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "現在地の表示に位置情報を使用します。";
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphoneos*]" = YES;
@@ -360,7 +365,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
 				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 13.3;
-				MARKETING_VERSION = "Alpha 1.0.1";
+				MARKETING_VERSION = "Alpha 1.1.0";
 				PRODUCT_BUNDLE_IDENTIFIER = com.Yuichiro.KanaSearch;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = auto;
@@ -378,13 +383,14 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = KanaSearch/KanaSearch.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_ASSET_PATHS = "\"KanaSearch/Preview Content\"";
 				DEVELOPMENT_TEAM = CZNP3969US;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_CFBundleDisplayName = "かなサーチ";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "現在地の表示に位置情報を使用します。";
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphoneos*]" = YES;
@@ -399,7 +405,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
 				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 13.3;
-				MARKETING_VERSION = "Alpha 1.0.1";
+				MARKETING_VERSION = "Alpha 1.1.0";
 				PRODUCT_BUNDLE_IDENTIFIER = com.Yuichiro.KanaSearch;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = auto;
