@@ -5,6 +5,7 @@
 //  Created by 丹羽雄一朗 on 2023/05/26.
 //
 //  2023/05/29 Alpha 1.0.0(1)
+//             Alpha 1.0.1(2)
 
 import SwiftUI
 
@@ -25,9 +26,9 @@ struct ContentView: View {
                 .ignoresSafeArea()
             VStack() {
                 HStack {
-                    searchButton
-                    currentLocationButton
                     infoButton
+                    currentLocationButton
+                    searchButton
                 }
                 Spacer()
             }
@@ -35,8 +36,7 @@ struct ContentView: View {
         }
         .sheet(isPresented: $shouldShowSheet) {
             SheetView(contentVM: contentVM)
-                .presentationDetents([.height(100), .medium, .large]) //sheetのサイズを指定
-                .presentationContentInteraction(.scrolls) //sheetのリサイズよりListのスクロールを優先
+                .presentationDetents([.height(115), .medium, .large]) //sheetのサイズを指定
                 .presentationBackgroundInteraction(.enabled) //sheetの背景ビューの操作を許可
                 .interactiveDismissDisabled() //Dismissを制限
         }
