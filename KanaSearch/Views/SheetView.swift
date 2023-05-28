@@ -15,10 +15,10 @@ struct SheetView: View {
         VStack(spacing: 0) {
             List {
                 Section {
-                    if !contentVM.addressOfSpecifiedLocation.postalCode.isEmpty && !contentVM.addressOfSpecifiedLocation.adress.isEmpty {
+                    if !contentVM.addressOfSpecifiedLocation.postalCode.isEmpty &&  !contentVM.addressOfSpecifiedLocation.adress.isEmpty {
                         adressSection
                     } else {
-                        Text("")
+                        Text("-") //初期値
                     }
                 } header: {
                     Text("指定された場所")

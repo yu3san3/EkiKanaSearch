@@ -75,7 +75,7 @@ final class ContentViewModel: ObservableObject {
         }
     }
     
-    func regeocoding(latitude: Double, longitude: Double) {
+    func regeocoding(latitude: Double, longitude: Double, completion: @escaping ((postalCode: String, adress: String)?, Error?) -> Void) {
         let location = CLLocation(latitude: latitude, longitude: longitude)
         
         let geocoder = CLGeocoder()
@@ -87,11 +87,14 @@ final class ContentViewModel: ObservableObject {
                   let subThoroughfare = placemark.subThoroughfare, // 番地
                   let postalCode = placemark.postalCode // 郵便番号
             else {
-                self.addressOfSpecifiedLocation = (postalCode: "", adress: "住所がありません")
+                Task { @MainActor in
+                     completion(nil, error)
+                }
                 return
             }
-            self.addressOfSpecifiedLocation.postalCode = postalCode
-            self.addressOfSpecifiedLocation.adress = "\(administrativeArea)\(locality)\(thoroughfare)\(subThoroughfare)"
+            Task { @MainActor in
+                completion((postalCode: postalCode, adress: "\(administrativeArea)\(locality)\n\(thoroughfare)\(subThoroughfare)"), nil)
+            }
         }
     }
 }
