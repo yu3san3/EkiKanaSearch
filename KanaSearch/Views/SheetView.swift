@@ -16,21 +16,19 @@ enum SearchType: String, CaseIterable, Identifiable {
 
 struct SheetView: View {
     
-    let stationData: [Station]
-    
-    @State private var selectedSearchType: SearchType = .station
+    @ObservedObject var contentVM: ContentViewModel
     
     var body: some View {
         VStack(spacing: 0) {
             searchTypePicker
-            StationListView(stationData: stationData)
+            StationListView(stationData: contentVM.stationData)
         }
     }
 }
 
 private extension SheetView {
     var searchTypePicker: some View {
-        Picker("SearchType", selection: $selectedSearchType) {
+        Picker("SearchType", selection: $contentVM.selectedSearchType) {
             ForEach(SearchType.allCases) { searchType in
                 Text(searchType.rawValue)
             }
@@ -43,6 +41,6 @@ private extension SheetView {
 
 struct SheetView_Previews: PreviewProvider {
     static var previews: some View {
-        SheetView(stationData: mockStationData)
+        SheetView(contentVM: ContentViewModel())
     }
 }

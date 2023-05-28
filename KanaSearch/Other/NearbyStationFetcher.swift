@@ -23,10 +23,8 @@ final class NearbyStationFetcher {
         case 200:
             do {
                 let resultData = try JSONDecoder().decode(NearbyStationData.self, from: data)
-                print("success!! \(resultData)")
                 return resultData.response.station
             } catch {
-                print("error")
                 throw APIError.jsonDecode
             }
         default:

@@ -23,7 +23,7 @@ struct ContentView: View {
         }
         .ignoresSafeArea()
         .sheet(isPresented: $shouldShowSheet) {
-            SheetView(stationData: contentVM.stationData)
+            SheetView(contentVM: contentVM)
                 .presentationDetents([.height(65), .medium, .large])
                 .presentationBackgroundInteraction(.enabled)
                 .interactiveDismissDisabled()
@@ -40,7 +40,6 @@ private extension ContentView {
     var searchButton: some View {
         Button(action: {
             contentVM.fetchStationData()
-            print("region: \(contentVM.region)")
         }) {
             Text("周辺を検索")
         }

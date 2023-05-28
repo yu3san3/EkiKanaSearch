@@ -9,7 +9,9 @@ import Foundation
 import MapKit
 
 final class ContentViewModel: ObservableObject {
+    
     @Published var stationData: [Station] = []
+    @Published var selectedSearchType: SearchType = .station
     
     @Published var region = MKCoordinateRegion(  //座標領域
         center: CLLocationCoordinate2D(latitude: 35.4127, longitude: 138.2740),
@@ -31,7 +33,6 @@ final class ContentViewModel: ObservableObject {
             
             do {
                 stationData = try await nearbyStationFetcher.fetchCityData(latitude: region.center.latitude, longitude: region.center.longitude)
-                print("stationData: \(stationData), region: \(region.center.latitude)")
             } catch {
                 if let apiError = error as? APIError {
                     self.error = apiError
