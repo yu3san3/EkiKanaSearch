@@ -19,6 +19,7 @@ struct SheetView: View {
                         adressSection
                     } else {
                         Text("-") //初期値
+                            .padding()
                     }
                 } header: {
                     Text("指定された場所")
