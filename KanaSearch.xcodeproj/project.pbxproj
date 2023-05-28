@@ -13,11 +13,12 @@
 		EB1514C12A20DCA000E39014 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EB1514C02A20DCA000E39014 /* Preview Assets.xcassets */; };
 		EB1514C82A21063100E39014 /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB1514C72A21063100E39014 /* MapView.swift */; };
 		EB1514CA2A211B3B00E39014 /* NearbyStationData.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB1514C92A211B3B00E39014 /* NearbyStationData.swift */; };
-		EB1514CC2A211EEB00E39014 /* NearbyStationFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB1514CB2A211EEB00E39014 /* NearbyStationFetcher.swift */; };
+		EB1514CC2A211EEB00E39014 /* NearbyStationDataFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB1514CB2A211EEB00E39014 /* NearbyStationDataFetcher.swift */; };
 		EB1514CE2A211F2500E39014 /* APIError.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB1514CD2A211F2500E39014 /* APIError.swift */; };
 		EB1514D32A21218700E39014 /* ContentViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB1514D22A21218700E39014 /* ContentViewModel.swift */; };
 		EB1514D62A21228200E39014 /* StationListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB1514D52A21228200E39014 /* StationListView.swift */; };
 		EB5855302A223F4100E50187 /* SheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB58552F2A223F4100E50187 /* SheetView.swift */; };
+		EB5855342A232E1E00E50187 /* NearbyCityData.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB5855332A232E1E00E50187 /* NearbyCityData.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -29,11 +30,12 @@
 		EB1514C02A20DCA000E39014 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		EB1514C72A21063100E39014 /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
 		EB1514C92A211B3B00E39014 /* NearbyStationData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NearbyStationData.swift; sourceTree = "<group>"; };
-		EB1514CB2A211EEB00E39014 /* NearbyStationFetcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NearbyStationFetcher.swift; sourceTree = "<group>"; };
+		EB1514CB2A211EEB00E39014 /* NearbyStationDataFetcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NearbyStationDataFetcher.swift; sourceTree = "<group>"; };
 		EB1514CD2A211F2500E39014 /* APIError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIError.swift; sourceTree = "<group>"; };
 		EB1514D22A21218700E39014 /* ContentViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentViewModel.swift; sourceTree = "<group>"; };
 		EB1514D52A21228200E39014 /* StationListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StationListView.swift; sourceTree = "<group>"; };
 		EB58552F2A223F4100E50187 /* SheetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SheetView.swift; sourceTree = "<group>"; };
+		EB5855332A232E1E00E50187 /* NearbyCityData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NearbyCityData.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -89,7 +91,7 @@
 		EB1514CF2A2120A400E39014 /* Other */ = {
 			isa = PBXGroup;
 			children = (
-				EB1514CB2A211EEB00E39014 /* NearbyStationFetcher.swift */,
+				EB1514CB2A211EEB00E39014 /* NearbyStationDataFetcher.swift */,
 				EB1514CD2A211F2500E39014 /* APIError.swift */,
 			);
 			path = Other;
@@ -99,6 +101,7 @@
 			isa = PBXGroup;
 			children = (
 				EB1514C92A211B3B00E39014 /* NearbyStationData.swift */,
+				EB5855332A232E1E00E50187 /* NearbyCityData.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -196,7 +199,8 @@
 				EB5855302A223F4100E50187 /* SheetView.swift in Sources */,
 				EB1514D62A21228200E39014 /* StationListView.swift in Sources */,
 				EB1514C82A21063100E39014 /* MapView.swift in Sources */,
-				EB1514CC2A211EEB00E39014 /* NearbyStationFetcher.swift in Sources */,
+				EB1514CC2A211EEB00E39014 /* NearbyStationDataFetcher.swift in Sources */,
+				EB5855342A232E1E00E50187 /* NearbyCityData.swift in Sources */,
 				EB1514B92A20DC9C00E39014 /* KanaSearchApp.swift in Sources */,
 				EB1514D32A21218700E39014 /* ContentViewModel.swift in Sources */,
 				EB1514CA2A211B3B00E39014 /* NearbyStationData.swift in Sources */,

@@ -22,7 +22,7 @@ final class ContentViewModel: ObservableObject {
     @Published var shouldShowAlert: Bool = false
     @Published var error: APIError?
     
-    private let nearbyStationFetcher = NearbyStationFetcher()
+    private let nearbyStationDataFetcher = NearbyStationDataFetcher()
     
     func fetchStationData() {
         Task { @MainActor in
@@ -32,7 +32,7 @@ final class ContentViewModel: ObservableObject {
             }
             
             do {
-                stationData = try await nearbyStationFetcher.fetchCityData(latitude: region.center.latitude, longitude: region.center.longitude)
+                stationData = try await nearbyStationDataFetcher.fetchCityData(latitude: region.center.latitude, longitude: region.center.longitude)
             } catch {
                 if let apiError = error as? APIError {
                     self.error = apiError

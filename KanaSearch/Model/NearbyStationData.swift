@@ -8,10 +8,10 @@
 import Foundation
 
 struct NearbyStationData: Codable {
-    let response: Response
+    let nearbyStationResponse: NearbyStationResponse
 }
 
-struct Response: Codable {
+struct NearbyStationResponse: Codable {
     let station: [Station]
 }
 

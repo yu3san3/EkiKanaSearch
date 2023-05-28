@@ -7,7 +7,7 @@
 
 import Foundation
 
-final class NearbyStationFetcher {
+final class NearbyStationDataFetcher {
     
     func fetchCityData(latitude: Double, longitude: Double) async throws -> [Station] {
         
