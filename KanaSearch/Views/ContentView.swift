@@ -4,8 +4,14 @@
 //
 //  Created by 丹羽雄一朗 on 2023/05/26.
 //
+//  2023/05/29 Alpha 1.0.0(1)
 
 import SwiftUI
+
+//バージョン情報
+let appVersion = Bundle.main.infoDictionary!["CFBundleShortVersionString"] as! String
+//ビルド情報
+let appBuildNum = Bundle.main.infoDictionary!["CFBundleVersion"] as! String
 
 struct ContentView: View {
     
@@ -21,6 +27,7 @@ struct ContentView: View {
                 HStack {
                     searchButton
                     currentLocationButton
+                    infoButton
                 }
                 Spacer()
             }
@@ -67,6 +74,18 @@ private extension ContentView {
             
         }) {
             Image(systemName: "location")
+        }
+        .padding(10)
+        .background(Color(UIColor.secondarySystemBackground))
+        .cornerRadius(30)
+    }
+    
+    var infoButton: some View {
+        Button(action: {
+            contentVM.addressOfSpecifiedLocation.postalCode = "-"
+            contentVM.addressOfSpecifiedLocation.adress = "Version \(appVersion)(\(appBuildNum))"
+        }) {
+            Image(systemName: "info.circle")
         }
         .padding(10)
         .background(Color(UIColor.secondarySystemBackground))
