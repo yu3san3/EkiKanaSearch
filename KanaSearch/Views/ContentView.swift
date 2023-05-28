@@ -16,17 +16,22 @@ struct ContentView: View {
     var body: some View {
         ZStack {
             MapView(station: nil, contentVM: contentVM)
-            VStack {
-                searchButton
-                currentLocationButton
+                .ignoresSafeArea()
+            VStack() {
+                HStack {
+                    searchButton
+                    currentLocationButton
+                }
+                Spacer()
             }
+            Image(systemName: "plus.viewfinder")
         }
-        .ignoresSafeArea()
         .sheet(isPresented: $shouldShowSheet) {
             SheetView(contentVM: contentVM)
-                .presentationDetents([.height(65), .medium, .large])
-                .presentationBackgroundInteraction(.enabled)
-                .interactiveDismissDisabled()
+                .presentationDetents([.height(65), .medium, .large]) //sheetのサイズを指定
+                .presentationContentInteraction(.scrolls) //sheetのリサイズよりListのスクロールを優先
+                .presentationBackgroundInteraction(.enabled) //sheetの背景ビューの操作を許可
+                .interactiveDismissDisabled() //Dismissを制限
         }
         .alert(isPresented: $contentVM.shouldShowAlert, error: contentVM.error) { _ in
             Button("OK", action: {})

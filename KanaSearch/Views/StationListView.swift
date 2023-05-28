@@ -17,8 +17,14 @@ struct StationListView: View {
         }
         List(stationData) { station in
             VStack(alignment: .leading) {
-                Text("\(station.name)駅")
-                    .bold()
+                HStack(spacing: 0) {
+                    if station.line.contains("新幹線") {
+                        Image(systemName: "train.side.front.car")
+                            .foregroundColor(Color.blue)
+                    }
+                    Text("\(station.name)駅")
+                        .bold()
+                }
                 Text("\(station.distance) \(station.line)")
                     .font(.callout)
             }
