@@ -11,7 +11,7 @@ struct NearbyCityData: Codable {
     let nearbyCityResponse: NearbyCityResponse
     
     enum CodingKeys: String, CodingKey {
-        case nearbyCityResponse
+        case nearbyCityResponse = "response"
     }
 }
 

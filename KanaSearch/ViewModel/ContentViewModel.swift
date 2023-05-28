@@ -31,15 +31,19 @@ final class ContentViewModel: ObservableObject {
             shouldShowLoadingIndicator = true
             defer {
                 shouldShowLoadingIndicator = false
+                print("func end, stationData: \(stationData)")
             }
             
             do {
-                stationData = try await nearbyStationDataFetcher.fetchStationData(latitude: region.center.latitude, longitude: region.center.longitude)
+                stationData = try await nearbyStationDataFetcher.fetchNearbyStationData(latitude: region.center.latitude, longitude: region.center.longitude)
+                print("stationData: \(stationData)")
             } catch {
                 if let apiError = error as? APIError {
+                    print(error)
                     self.error = apiError
                     shouldShowAlert = true
                 } else if let error = error as? URLError, error.code == URLError.notConnectedToInternet {
+                    print(error)
                     self.error = APIError.network
                     shouldShowAlert = true
                 } else {
@@ -57,7 +61,7 @@ final class ContentViewModel: ObservableObject {
             }
             
             do {
-                cityData = try await nearbyCityDataFetcher.fetchCityData(latitude: region.center.latitude, longitude: region.center.longitude)
+                cityData = try await nearbyCityDataFetcher.fetchNearbyCityData(latitude: region.center.latitude, longitude: region.center.longitude)
             } catch {
                 if let apiError = error as? APIError {
                     self.error = apiError

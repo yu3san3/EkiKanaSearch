@@ -9,6 +9,10 @@ import Foundation
 
 struct NearbyStationData: Codable {
     let nearbyStationResponse: NearbyStationResponse
+    
+    enum CodingKeys: String, CodingKey {
+        case nearbyStationResponse = "response"
+    }
 }
 
 struct NearbyStationResponse: Codable {

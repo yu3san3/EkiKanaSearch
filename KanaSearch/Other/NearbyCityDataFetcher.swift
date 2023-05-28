@@ -9,7 +9,7 @@ import Foundation
 
 final class NearbyCityDataFetcher {
     
-    func fetchCityData(latitude: Double, longitude: Double) async throws -> [Location] {
+    func fetchNearbyCityData(latitude: Double, longitude: Double) async throws -> [Location] {
         
         let url = URL(string: "https://geoapi.heartrails.com/api/json?method=searchByGeoLocation&x=\(longitude)&y=\(latitude)")!
         

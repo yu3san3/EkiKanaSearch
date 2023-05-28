@@ -14,7 +14,6 @@ struct SheetView: View {
     var body: some View {
         VStack(spacing: 0) {
             searchTypePicker
-            let _ = print(contentVM.stationData)
             switch contentVM.selectedSearchType {
             case .station:
                 StationListView(stationData: contentVM.stationData)

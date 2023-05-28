@@ -9,7 +9,7 @@ import Foundation
 
 final class NearbyStationDataFetcher {
     
-    func fetchStationData(latitude: Double, longitude: Double) async throws -> [Station] {
+    func fetchNearbyStationData(latitude: Double, longitude: Double) async throws -> [Station] {
         
         let url = URL(string: "https://express.heartrails.com/api/json?method=getStations&x=\(longitude)&y=\(latitude)")!
         

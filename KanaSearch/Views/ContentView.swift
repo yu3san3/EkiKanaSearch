@@ -41,6 +41,7 @@ private extension ContentView {
         Button(action: {
             contentVM.fetchStationData()
             contentVM.fetchCityData()
+            print("button tapped")
         }) {
             Text("周辺を検索")
         }
