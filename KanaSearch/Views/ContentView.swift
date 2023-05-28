@@ -43,11 +43,9 @@ struct ContentView: View {
                 .presentationBackgroundInteraction(.enabled) //sheetの背景ビューの操作を許可
                 .interactiveDismissDisabled() //Dismissを制限
         }
-//        .task(id: locationManager.location) {
-//            withAnimation {
-//                contentVM.region.center = locationManager.location.coordinate
-//            }
-//        }
+        .onAppear {
+            contentVM.userTrackingMode = .follow
+        }
         .alert(isPresented: $contentVM.shouldShowAlert, error: contentVM.error) { _ in
             Button("OK", action: {})
         } message: { error in
@@ -80,7 +78,7 @@ private extension ContentView {
     var currentLocationButton: some View {
         Button(action: {
             withAnimation {
-                contentVM.region.center = locationManager.location.coordinate
+                contentVM.userTrackingMode = .follow
             }
         }) {
             Image(systemName: "location")

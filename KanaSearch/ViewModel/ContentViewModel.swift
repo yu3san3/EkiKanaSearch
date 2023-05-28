@@ -17,7 +17,7 @@ final class ContentViewModel: ObservableObject {
     
     @Published var region = MKCoordinateRegion(  //座標領域
         center: CLLocationCoordinate2D(latitude: 35.6814, longitude: 139.7657),
-        span: MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01)
+        span: MKCoordinateSpan(latitudeDelta: 0.1, longitudeDelta: 0.1)
     )
     @Published var userTrackingMode: MapUserTrackingMode = .none
     
