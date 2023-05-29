@@ -13,7 +13,9 @@ final class ContentViewModel: ObservableObject {
     @Published var stationData: [Station] = []
     @Published var cityData: [Location] = []
     @Published var selectedSearchType: SearchType = .station
-    @Published var addressOfSpecifiedLocation: (postalCode: String, adress: String) = (postalCode: "", adress: "") //指定された場所の住所
+    
+    typealias Adress = (postalCode: String, adress: String)
+    @Published var addressOfSpecifiedLocation: Adress = (postalCode: "", adress: "") //指定された場所の住所
     
     @Published var region = MKCoordinateRegion(  //座標領域
         center: CLLocationCoordinate2D(latitude: 35.6814, longitude: 139.7657),
@@ -76,7 +78,7 @@ final class ContentViewModel: ObservableObject {
         }
     }
     
-    func regeocoding(latitude: Double, longitude: Double, completion: @escaping ((postalCode: String, adress: String)?, Error?) -> Void) {
+    func regeocoding(latitude: Double, longitude: Double, completion: @escaping (Adress?, Error?) -> Void) {
         let location = CLLocation(latitude: latitude, longitude: longitude)
         
         let geocoder = CLGeocoder()
