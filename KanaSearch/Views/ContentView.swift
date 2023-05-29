@@ -43,9 +43,6 @@ struct ContentView: View {
                 .presentationBackgroundInteraction(.enabled) //sheetの背景ビューの操作を許可
                 .interactiveDismissDisabled() //Dismissを制限
         }
-        .onAppear {
-            contentVM.userTrackingMode = .follow
-        }
         .alert(isPresented: $contentVM.shouldShowAlert, error: contentVM.error) { _ in
             Button("OK", action: {})
         } message: { error in
@@ -81,7 +78,14 @@ private extension ContentView {
                 contentVM.userTrackingMode = .follow
             }
         }) {
-            Image(systemName: "location")
+            switch contentVM.userTrackingMode {
+            case .none:
+                Image(systemName: "location")
+            case .follow:
+                Image(systemName: "location.fill")
+            default:
+                let _ = print("Unknown userTrackingMode")
+            }
         }
         .padding(10)
         .background(Color(UIColor.secondarySystemBackground))
