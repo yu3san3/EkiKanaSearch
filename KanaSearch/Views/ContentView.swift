@@ -38,10 +38,13 @@ struct ContentView: View {
             Image(systemName: "plus.viewfinder")
         }
         .sheet(isPresented: $shouldShowSheet) {
-            SheetView(contentVM: contentVM)
-                .presentationDetents([.height(115), .medium, .large]) //sheetのサイズを指定
-                .presentationBackgroundInteraction(.enabled) //sheetの背景ビューの操作を許可
-                .interactiveDismissDisabled() //Dismissを制限
+            GeometryReader { geometry in
+                let _ = print(geometry.size.height)
+                SheetView(contentVM: contentVM)
+                    .presentationDetents([.height(115), .medium, .large]) //sheetのサイズを指定
+                    .presentationBackgroundInteraction(.enabled) //sheetの背景ビューの操作を許可
+                    .interactiveDismissDisabled() //Dismissを制限
+            }
         }
         .alert(isPresented: $contentVM.shouldShowAlert, error: contentVM.error) { _ in
             Button("OK", action: {})

@@ -14,6 +14,8 @@ final class ContentViewModel: ObservableObject {
     @Published var cityData: [Location] = []
     @Published var selectedSearchType: SearchType = .station
     
+    @Published var sheetOffsetY: CGFloat = 0
+    
     typealias Adress = (postalCode: String, adress: String)
     @Published var addressOfSpecifiedLocation: Adress = (postalCode: "", adress: "") //指定された場所の住所
     
