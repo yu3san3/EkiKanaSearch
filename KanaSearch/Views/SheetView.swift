@@ -15,11 +15,18 @@ struct SheetView: View {
         VStack(spacing: 0) {
             List {
                 Section {
-                    if !contentVM.addressOfSpecifiedLocation.postalCode.isEmpty &&  !contentVM.addressOfSpecifiedLocation.adress.isEmpty {
-                        adressSection
-                    } else {
-                        Text("-") //初期値
-                            .padding()
+                    HStack {
+                        if !contentVM.addressOfSpecifiedLocation.postalCode.isEmpty &&  !contentVM.addressOfSpecifiedLocation.adress.isEmpty {
+                            adressText
+                        } else {
+                            VStack {
+                                ForEach(0..<3) { _ in 
+                                    Text(" ") //初期値
+                                }
+                            }
+                        }
+                        Spacer()
+                        searchButton
                     }
                 } header: {
                     Text("指定された場所")
@@ -41,6 +48,34 @@ struct SheetView: View {
 }
 
 private extension SheetView {
+    
+    var adressText: some View {
+        VStack(alignment: .leading) {
+            Text("〒\(contentVM.addressOfSpecifiedLocation.postalCode)")
+            Text(contentVM.addressOfSpecifiedLocation.adress)
+        }
+    }
+    
+    var searchButton: some View {
+        Button(action: {
+            contentVM.fetchStationData()
+            contentVM.fetchCityData()
+            contentVM.regeocoding(latitude: contentVM.region.center.latitude, longitude: contentVM.region.center.longitude) { adress, error in
+                guard let adress = adress else {
+                    print(error ?? "Unknown error")
+                    contentVM.addressOfSpecifiedLocation = (postalCode: "", adress: "")
+                    return
+                }
+                contentVM.addressOfSpecifiedLocation = adress
+            }
+        }) {
+            Text("周辺を検索")
+        }
+        .padding(10)
+        .background(Color(UIColor.secondarySystemBackground))
+        .cornerRadius(30)
+    }
+    
     var searchTypePicker: some View {
         Picker("SearchType", selection: $contentVM.selectedSearchType) {
             ForEach(SearchType.allCases) { searchType in
@@ -48,13 +83,6 @@ private extension SheetView {
             }
         }
         .pickerStyle(.segmented)
-    }
-    
-    var adressSection: some View {
-        VStack(alignment: .leading) {
-            Text("〒\(contentVM.addressOfSpecifiedLocation.postalCode)")
-            Text(contentVM.addressOfSpecifiedLocation.adress)
-        }
     }
 }
 

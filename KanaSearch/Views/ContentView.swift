@@ -23,27 +23,42 @@ struct ContentView: View {
     
     @State private var shouldShowSheet: Bool = true
     
+    @State private var sheetHeight: CGFloat = 0
+    
+    private let defaultSheetHeight: CGFloat = 115
+    private let screenHeight: CGFloat = UIScreen.main.bounds.height
+    
     var body: some View {
         ZStack {
             MapView(station: nil, contentVM: contentVM)
                 .ignoresSafeArea()
-            VStack() {
+            VStack {
                 HStack {
+                    Spacer()
                     infoButton
-                    currentLocationButton
-                    searchButton
+                        .padding(.horizontal, 10)
                 }
                 Spacer()
+            }
+            HStack {
+                Spacer()
+                currentLocationButton
+                    .padding(.horizontal, 10)
+                    .offset(y: screenHeight/2 - sheetHeight - 70)
             }
             Image(systemName: "plus.viewfinder")
         }
         .sheet(isPresented: $shouldShowSheet) {
             GeometryReader { geometry in
-                let _ = print(geometry.size.height)
                 SheetView(contentVM: contentVM)
-                    .presentationDetents([.height(115), .medium, .large]) //sheetのサイズを指定
+                    .presentationDetents([.height(defaultSheetHeight), .medium, .large]) //sheetのサイズを指定
                     .presentationBackgroundInteraction(.enabled) //sheetの背景ビューの操作を許可
                     .interactiveDismissDisabled() //Dismissを制限
+                    .onChange(of: geometry.size.height) { _ in
+                        sheetHeight = geometry.size.height
+                        print(sheetHeight)
+                    }
+                    
             }
         }
         .alert(isPresented: $contentVM.shouldShowAlert, error: contentVM.error) { _ in
@@ -55,25 +70,6 @@ struct ContentView: View {
 }
 
 private extension ContentView {
-    var searchButton: some View {
-        Button(action: {
-            contentVM.fetchStationData()
-            contentVM.fetchCityData()
-            contentVM.regeocoding(latitude: contentVM.region.center.latitude, longitude: contentVM.region.center.longitude) { adress, error in
-                guard let adress = adress else {
-                    print(error ?? "Unknown error")
-                    contentVM.addressOfSpecifiedLocation = (postalCode: "", adress: "")
-                    return
-                }
-                contentVM.addressOfSpecifiedLocation = adress
-            }
-        }) {
-            Text("周辺を検索")
-        }
-        .padding(10)
-        .background(Color(UIColor.secondarySystemBackground))
-        .cornerRadius(30)
-    }
     
     var currentLocationButton: some View {
         Button(action: {
@@ -90,7 +86,7 @@ private extension ContentView {
                 let _ = print("Unknown userTrackingMode")
             }
         }
-        .padding(10)
+        .padding(15)
         .background(Color(UIColor.secondarySystemBackground))
         .cornerRadius(30)
     }
