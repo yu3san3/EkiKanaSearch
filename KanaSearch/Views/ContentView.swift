@@ -23,10 +23,8 @@ struct ContentView: View {
     
     @State private var shouldShowSheet: Bool = true
     
-    @State private var sheetHeight: CGFloat = 0
-    
-    private let defaultSheetHeight: CGFloat = 115
     private let screenHeight: CGFloat = UIScreen.main.bounds.height
+    @State private var sheetHeight: CGFloat = 0
     
     var body: some View {
         ZStack {
@@ -44,18 +42,20 @@ struct ContentView: View {
                 Spacer()
                 currentLocationButton
                     .padding(.horizontal, 10)
-                    .offset(y: screenHeight/2 - sheetHeight - 70)
+                    .offset(y: screenHeight/2 - sheetHeight - 75)
             }
             Image(systemName: "plus.viewfinder")
         }
         .sheet(isPresented: $shouldShowSheet) {
             GeometryReader { geometry in
                 SheetView(contentVM: contentVM)
-                    .presentationDetents([.height(defaultSheetHeight), .medium, .large]) //sheetのサイズを指定
+                    .presentationDetents([.height(115), .medium, .large]) //sheetのサイズを指定
                     .presentationBackgroundInteraction(.enabled) //sheetの背景ビューの操作を許可
                     .interactiveDismissDisabled() //Dismissを制限
                     .onChange(of: geometry.size.height) { _ in
-                        sheetHeight = geometry.size.height
+                        if geometry.size.height < screenHeight/2 { //sheetが画面サイズの半分を超えたらsheetHeightを更新しない
+                            sheetHeight = geometry.size.height
+                        }
                         print(sheetHeight)
                     }
                     

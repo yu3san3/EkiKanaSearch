@@ -69,7 +69,10 @@ private extension SheetView {
                 contentVM.addressOfSpecifiedLocation = adress
             }
         }) {
-            Text("周辺を検索")
+            HStack(spacing: 0) {
+                Image(systemName: "magnifyingglass")
+                Text("周辺を検索")
+            }
         }
         .padding(10)
         .background(Color(UIColor.secondarySystemBackground))
