@@ -7,6 +7,7 @@
 //  2023/05/29 Alpha 1.0.0(1)
 //             Alpha 1.0.1(2)
 //             Alpha 1.1.0(3)
+//             Alpha 1.2.0(4)
 
 import SwiftUI
 
@@ -45,11 +46,12 @@ struct ContentView: View {
                     .offset(y: screenHeight/2 - sheetHeight - 75)
             }
             Image(systemName: "plus.viewfinder")
+                .loading(isRefleshing: contentVM.shouldShowLoadingIndicator)
         }
         .sheet(isPresented: $shouldShowSheet) {
             GeometryReader { geometry in
                 SheetView(contentVM: contentVM)
-                    .presentationDetents([.height(115), .medium, .large]) //sheetのサイズを指定
+                    .presentationDetents([.height(155), .medium, .large]) //sheetのサイズを指定
                     .presentationBackgroundInteraction(.enabled) //sheetの背景ビューの操作を許可
                     .interactiveDismissDisabled() //Dismissを制限
                     .onChange(of: geometry.size.height) { _ in

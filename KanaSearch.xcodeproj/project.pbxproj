@@ -17,6 +17,7 @@
 		EB1514CE2A211F2500E39014 /* APIError.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB1514CD2A211F2500E39014 /* APIError.swift */; };
 		EB1514D32A21218700E39014 /* ContentViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB1514D22A21218700E39014 /* ContentViewModel.swift */; };
 		EB1514D62A21228200E39014 /* StationListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB1514D52A21228200E39014 /* StationListView.swift */; };
+		EB28F9B02A27409B00127DD4 /* LoadingViewModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB28F9AF2A27409B00127DD4 /* LoadingViewModifier.swift */; };
 		EB5855302A223F4100E50187 /* SheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB58552F2A223F4100E50187 /* SheetView.swift */; };
 		EB5855342A232E1E00E50187 /* NearbyCityData.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB5855332A232E1E00E50187 /* NearbyCityData.swift */; };
 		EB5855362A23300500E50187 /* NearbyCityDataFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB5855352A23300500E50187 /* NearbyCityDataFetcher.swift */; };
@@ -38,6 +39,7 @@
 		EB1514CD2A211F2500E39014 /* APIError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIError.swift; sourceTree = "<group>"; };
 		EB1514D22A21218700E39014 /* ContentViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentViewModel.swift; sourceTree = "<group>"; };
 		EB1514D52A21228200E39014 /* StationListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StationListView.swift; sourceTree = "<group>"; };
+		EB28F9AF2A27409B00127DD4 /* LoadingViewModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingViewModifier.swift; sourceTree = "<group>"; };
 		EB58552F2A223F4100E50187 /* SheetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SheetView.swift; sourceTree = "<group>"; };
 		EB5855332A232E1E00E50187 /* NearbyCityData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NearbyCityData.swift; sourceTree = "<group>"; };
 		EB5855352A23300500E50187 /* NearbyCityDataFetcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NearbyCityDataFetcher.swift; sourceTree = "<group>"; };
@@ -103,6 +105,7 @@
 				EB5855352A23300500E50187 /* NearbyCityDataFetcher.swift */,
 				EB58553D2A23C0DF00E50187 /* LocationManager.swift */,
 				EB5855392A23363C00E50187 /* SearchType.swift */,
+				EB28F9AF2A27409B00127DD4 /* LoadingViewModifier.swift */,
 				EB1514CD2A211F2500E39014 /* APIError.swift */,
 			);
 			path = Other;
@@ -207,6 +210,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EB28F9B02A27409B00127DD4 /* LoadingViewModifier.swift in Sources */,
 				EB1514BB2A20DC9C00E39014 /* ContentView.swift in Sources */,
 				EB5855302A223F4100E50187 /* SheetView.swift in Sources */,
 				EB1514D62A21228200E39014 /* StationListView.swift in Sources */,
@@ -343,7 +347,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = KanaSearch/KanaSearch.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 3;
+				CURRENT_PROJECT_VERSION = 4;
 				DEVELOPMENT_ASSET_PATHS = "\"KanaSearch/Preview Content\"";
 				DEVELOPMENT_TEAM = CZNP3969US;
 				ENABLE_HARDENED_RUNTIME = YES;
@@ -365,7 +369,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
 				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 13.3;
-				MARKETING_VERSION = "Alpha 1.1.0";
+				MARKETING_VERSION = "Alpha 1.2.0";
 				PRODUCT_BUNDLE_IDENTIFIER = com.Yuichiro.KanaSearch;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = auto;
@@ -383,7 +387,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = KanaSearch/KanaSearch.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 3;
+				CURRENT_PROJECT_VERSION = 4;
 				DEVELOPMENT_ASSET_PATHS = "\"KanaSearch/Preview Content\"";
 				DEVELOPMENT_TEAM = CZNP3969US;
 				ENABLE_HARDENED_RUNTIME = YES;
@@ -405,7 +409,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
 				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 13.3;
-				MARKETING_VERSION = "Alpha 1.1.0";
+				MARKETING_VERSION = "Alpha 1.2.0";
 				PRODUCT_BUNDLE_IDENTIFIER = com.Yuichiro.KanaSearch;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = auto;

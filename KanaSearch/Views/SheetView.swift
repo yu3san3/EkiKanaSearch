@@ -19,11 +19,7 @@ struct SheetView: View {
                         if !contentVM.addressOfSpecifiedLocation.postalCode.isEmpty &&  !contentVM.addressOfSpecifiedLocation.adress.isEmpty {
                             adressText
                         } else {
-                            VStack {
-                                ForEach(0..<3) { _ in 
-                                    Text(" ") //初期値
-                                }
-                            }
+                            Text("-")
                         }
                         Spacer()
                         searchButton
