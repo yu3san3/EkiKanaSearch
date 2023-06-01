@@ -8,6 +8,7 @@
 //             Alpha 1.0.1(2)
 //             Alpha 1.1.0(3)
 //             Alpha 1.2.0(4)
+//             Alpha 1.3.0(5)
 
 import SwiftUI
 
@@ -83,9 +84,9 @@ private extension ContentView {
     var currentSpeedText: some View {
         Text("\(meterPerSecondToKilometerPerHour(speed: locationManager.location.speed)) km/h")
             .foregroundColor(Color.white)
-            .padding(5)
+            .padding(6)
             .background(Color.black)
-            .opacity(0.5)
+            .opacity(0.6)
     }
     
     var moveToCurrentLocationButton: some View {

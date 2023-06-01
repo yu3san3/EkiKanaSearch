@@ -10,20 +10,21 @@ import MapKit
 
 final class ContentViewModel: ObservableObject {
     
-    @Published var stationData: [Station] = []
-    @Published var cityData: [Location] = []
-    @Published var selectedSearchType: SearchType = .station
-    
-    typealias Adress = (postalCode: String, adress: String)
-    @Published var addressOfSpecifiedLocation: Adress = (postalCode: "", adress: "") //指定された場所の住所
-    
     @Published var region = MKCoordinateRegion(  //座標領域
         center: CLLocationCoordinate2D(latitude: 35.6814, longitude: 139.7657),
         span: MKCoordinateSpan(latitudeDelta: 0.1, longitudeDelta: 0.1)
     )
     @Published var userTrackingMode: MapUserTrackingMode = .none
     
+    @Published var stationData: [Station] = []
+    @Published var cityData: [Location] = []
+    
+    typealias Adress = (postalCode: String, adress: String)
+    @Published var addressOfSpecifiedLocation: Adress = (postalCode: "", adress: "") //指定された場所の住所
+    @Published var selectedSearchType: SearchType = .station
+    
     @Published var shouldShowLoadingIndicator: Bool = false
+    
     @Published var shouldShowAlert: Bool = false
     @Published var error: APIError?
     
