@@ -43,7 +43,7 @@ struct ContentView: View {
                 Spacer()
                 currentLocationButton
                     .padding(.horizontal, 10)
-                    .offset(y: screenHeight/2 - sheetHeight - 75)
+                    .offset(y: -(sheetHeight) )
             }
             Image(systemName: "plus.viewfinder")
                 .loading(isRefleshing: contentVM.shouldShowLoadingIndicator)
@@ -51,16 +51,18 @@ struct ContentView: View {
         .sheet(isPresented: $shouldShowSheet) {
             GeometryReader { geometry in
                 SheetView(contentVM: contentVM)
-                    .presentationDetents([.height(155), .medium, .large]) //sheetのサイズを指定
+                    .presentationDetents([
+                        .height(geometry.safeAreaInsets.bottom != 0 ? 100 : 135), //sageAreaの有無によって高さを変える
+                        .medium,
+                        .large
+                    ]) //sheetのサイズを指定
                     .presentationBackgroundInteraction(.enabled) //sheetの背景ビューの操作を許可
                     .interactiveDismissDisabled() //Dismissを制限
                     .onChange(of: geometry.size.height) { _ in
                         if geometry.size.height < screenHeight/2 { //sheetが画面サイズの半分を超えたらsheetHeightを更新しない
                             sheetHeight = geometry.size.height
                         }
-                        print(sheetHeight)
                     }
-                    
             }
         }
         .alert(isPresented: $contentVM.shouldShowAlert, error: contentVM.error) { _ in
