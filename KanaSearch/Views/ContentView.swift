@@ -83,6 +83,7 @@ private extension ContentView {
     
     var currentSpeedText: some View {
         Text("\(meterPerSecondToKilometerPerHour(speed: locationManager.location.speed)) km/h")
+            .font(.title2)
             .foregroundColor(Color.white)
             .padding(6)
             .background(Color.black)
