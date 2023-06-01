@@ -39,16 +39,17 @@ struct ContentView: View {
                 }
                 Spacer()
             }
-            HStack {
+            HStack(alignment: .bottom) {
+                currentSpeedText
                 Spacer()
-                currentLocationButton
-                    .padding(.horizontal, 10)
-                    //offsetの初期値は画面中央かつ、offsetの値が小さくなるほどボタンの位置は上へ動く
-                    //screenHeight/2: 画面下端の座標を求める
-                    //-sheetHeight: 画面下端からsheetHeightの分だけ上へ
-                    //+85: sheetの上端から85だけ上へ
-                    .offset(y:  screenHeight/2 - sheetHeight - 85 )
+                moveToCurrentLocationButton
             }
+            .padding(.horizontal, 10)
+            //offsetの初期値は画面中央かつ、offsetの値が小さくなるほどボタンの位置は上へ動く
+            //screenHeight/2: 画面下端の座標を求める
+            //-sheetHeight: 画面下端からsheetHeightの分だけ上へ
+            //+85: sheetの上端から85だけ上へ
+            .offset(y:  screenHeight/2 - sheetHeight - 85 )
             Image(systemName: "plus.viewfinder")
                 .loading(isRefleshing: contentVM.shouldShowLoadingIndicator)
         }
@@ -66,8 +67,6 @@ struct ContentView: View {
                         if geometry.size.height < screenHeight/2 { //sheetが画面サイズの半分を超えたらsheetHeightを更新しない
                             sheetHeight = geometry.size.height
                         }
-                        print("sheetHeight: \(sheetHeight), screenHeight: \(screenHeight)")
-                        print("offset:")
                     }
             }
         }
@@ -81,7 +80,15 @@ struct ContentView: View {
 
 private extension ContentView {
     
-    var currentLocationButton: some View {
+    var currentSpeedText: some View {
+        Text("\(meterPerSecondToKilometerPerHour(speed: locationManager.location.speed)) km/h")
+            .foregroundColor(Color.white)
+            .padding(5)
+            .background(Color.black)
+            .opacity(0.5)
+    }
+    
+    var moveToCurrentLocationButton: some View {
         Button(action: {
             withAnimation {
                 contentVM.userTrackingMode = .follow
@@ -111,6 +118,13 @@ private extension ContentView {
         .padding(10)
         .background(Color(UIColor.secondarySystemBackground))
         .cornerRadius(30)
+    }
+    
+    func meterPerSecondToKilometerPerHour(speed: Double) -> Int {
+        if speed < 0 {
+            return 0
+        }
+        return Int(speed*3.6)
     }
 }
 

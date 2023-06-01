@@ -101,11 +101,11 @@
 		EB1514CF2A2120A400E39014 /* Other */ = {
 			isa = PBXGroup;
 			children = (
-				EB4EE8FE2A286AA600775CCD /* Fetcher */,
 				EB58553D2A23C0DF00E50187 /* LocationManager.swift */,
 				EB5855392A23363C00E50187 /* SearchType.swift */,
 				EB28F9AF2A27409B00127DD4 /* LoadingViewModifier.swift */,
 				EB1514CD2A211F2500E39014 /* APIError.swift */,
+				EB4EE8FE2A286AA600775CCD /* Fetcher */,
 			);
 			path = Other;
 			sourceTree = "<group>";
