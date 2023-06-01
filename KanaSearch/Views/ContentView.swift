@@ -58,7 +58,7 @@ struct ContentView: View {
             GeometryReader { geometry in
                 SheetView(contentVM: contentVM)
                     .presentationDetents([ //sheetのサイズを指定
-                        .height(geometry.safeAreaInsets.bottom == 0 ? 135 : 100), //sageAreaの有無によって高さを変える
+                        .height(geometry.safeAreaInsets.bottom == 0 ? 155 : 145), //sageAreaの有無によって高さを変える
                         .medium,
                         .large
                     ])
