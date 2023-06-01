@@ -43,7 +43,11 @@ struct ContentView: View {
                 Spacer()
                 currentLocationButton
                     .padding(.horizontal, 10)
-                    .offset(y: -(sheetHeight) )
+                    //offsetの初期値は画面中央かつ、offsetの値が小さくなるほどボタンの位置は上へ動く
+                    //screenHeight/2: 画面下端の座標を求める
+                    //-sheetHeight: 画面下端からsheetHeightの分だけ上へ
+                    //+85: sheetの上端から85だけ上へ
+                    .offset(y:  screenHeight/2 - sheetHeight - 85 )
             }
             Image(systemName: "plus.viewfinder")
                 .loading(isRefleshing: contentVM.shouldShowLoadingIndicator)
@@ -51,17 +55,19 @@ struct ContentView: View {
         .sheet(isPresented: $shouldShowSheet) {
             GeometryReader { geometry in
                 SheetView(contentVM: contentVM)
-                    .presentationDetents([
-                        .height(geometry.safeAreaInsets.bottom != 0 ? 100 : 135), //sageAreaの有無によって高さを変える
+                    .presentationDetents([ //sheetのサイズを指定
+                        .height(geometry.safeAreaInsets.bottom == 0 ? 135 : 100), //sageAreaの有無によって高さを変える
                         .medium,
                         .large
-                    ]) //sheetのサイズを指定
+                    ])
                     .presentationBackgroundInteraction(.enabled) //sheetの背景ビューの操作を許可
                     .interactiveDismissDisabled() //Dismissを制限
                     .onChange(of: geometry.size.height) { _ in
                         if geometry.size.height < screenHeight/2 { //sheetが画面サイズの半分を超えたらsheetHeightを更新しない
                             sheetHeight = geometry.size.height
                         }
+                        print("sheetHeight: \(sheetHeight), screenHeight: \(screenHeight)")
+                        print("offset:")
                     }
             }
         }
