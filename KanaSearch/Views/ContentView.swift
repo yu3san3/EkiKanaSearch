@@ -49,14 +49,14 @@ struct ContentView: View {
             //offsetの初期値は画面中央かつ、offsetの値が小さくなるほどボタンの位置は上へ動く
             //screenHeight/2: 画面下端の座標を求める
             //-sheetHeight: 画面下端からsheetHeightの分だけ上へ
-            //+85: sheetの上端から85だけ上へ
+            //-85: sheetの上端から85だけ上へ
             .offset(y:  screenHeight/2 - sheetHeight - 85 )
             Image(systemName: "plus.viewfinder")
                 .loading(isRefleshing: contentVM.shouldShowLoadingIndicator)
         }
         .sheet(isPresented: $shouldShowSheet) {
             GeometryReader { geometry in
-                SheetView(contentVM: contentVM)
+                SearchResultView(contentVM: contentVM)
                     .presentationDetents([ //sheetのサイズを指定
                         .height(geometry.safeAreaInsets.bottom == 0 ? 155 : 145), //sageAreaの有無によって高さを変える
                         .medium,

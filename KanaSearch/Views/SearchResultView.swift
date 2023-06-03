@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct SheetView: View {
+struct SearchResultView: View {
     
     @ObservedObject var contentVM: ContentViewModel
     
@@ -43,7 +43,7 @@ struct SheetView: View {
     }
 }
 
-private extension SheetView {
+private extension SearchResultView {
     
     var adressText: some View {
         VStack(alignment: .leading) {
@@ -87,6 +87,6 @@ private extension SheetView {
 
 struct SheetView_Previews: PreviewProvider {
     static var previews: some View {
-        SheetView(contentVM: ContentViewModel())
+        SearchResultView(contentVM: ContentViewModel())
     }
 }

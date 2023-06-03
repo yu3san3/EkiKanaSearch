@@ -18,7 +18,7 @@
 		EB1514D32A21218700E39014 /* ContentViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB1514D22A21218700E39014 /* ContentViewModel.swift */; };
 		EB1514D62A21228200E39014 /* StationListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB1514D52A21228200E39014 /* StationListView.swift */; };
 		EB28F9B02A27409B00127DD4 /* LoadingViewModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB28F9AF2A27409B00127DD4 /* LoadingViewModifier.swift */; };
-		EB5855302A223F4100E50187 /* SheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB58552F2A223F4100E50187 /* SheetView.swift */; };
+		EB5855302A223F4100E50187 /* SearchResultView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB58552F2A223F4100E50187 /* SearchResultView.swift */; };
 		EB5855342A232E1E00E50187 /* NearbyCityData.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB5855332A232E1E00E50187 /* NearbyCityData.swift */; };
 		EB5855362A23300500E50187 /* NearbyCityDataFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB5855352A23300500E50187 /* NearbyCityDataFetcher.swift */; };
 		EB5855382A23344700E50187 /* CityListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB5855372A23344700E50187 /* CityListView.swift */; };
@@ -40,7 +40,7 @@
 		EB1514D22A21218700E39014 /* ContentViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentViewModel.swift; sourceTree = "<group>"; };
 		EB1514D52A21228200E39014 /* StationListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StationListView.swift; sourceTree = "<group>"; };
 		EB28F9AF2A27409B00127DD4 /* LoadingViewModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingViewModifier.swift; sourceTree = "<group>"; };
-		EB58552F2A223F4100E50187 /* SheetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SheetView.swift; sourceTree = "<group>"; };
+		EB58552F2A223F4100E50187 /* SearchResultView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultView.swift; sourceTree = "<group>"; };
 		EB5855332A232E1E00E50187 /* NearbyCityData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NearbyCityData.swift; sourceTree = "<group>"; };
 		EB5855352A23300500E50187 /* NearbyCityDataFetcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NearbyCityDataFetcher.swift; sourceTree = "<group>"; };
 		EB5855372A23344700E50187 /* CityListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityListView.swift; sourceTree = "<group>"; };
@@ -124,7 +124,7 @@
 			children = (
 				EB1514BA2A20DC9C00E39014 /* ContentView.swift */,
 				EB1514C72A21063100E39014 /* MapView.swift */,
-				EB58552F2A223F4100E50187 /* SheetView.swift */,
+				EB58552F2A223F4100E50187 /* SearchResultView.swift */,
 				EB1514D52A21228200E39014 /* StationListView.swift */,
 				EB5855372A23344700E50187 /* CityListView.swift */,
 			);
@@ -220,7 +220,7 @@
 			files = (
 				EB28F9B02A27409B00127DD4 /* LoadingViewModifier.swift in Sources */,
 				EB1514BB2A20DC9C00E39014 /* ContentView.swift in Sources */,
-				EB5855302A223F4100E50187 /* SheetView.swift in Sources */,
+				EB5855302A223F4100E50187 /* SearchResultView.swift in Sources */,
 				EB1514D62A21228200E39014 /* StationListView.swift in Sources */,
 				EB1514C82A21063100E39014 /* MapView.swift in Sources */,
 				EB5855362A23300500E50187 /* NearbyCityDataFetcher.swift in Sources */,
