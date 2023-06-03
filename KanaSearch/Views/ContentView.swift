@@ -9,6 +9,7 @@
 //             Alpha 1.1.0(3)
 //             Alpha 1.2.0(4)
 //             Alpha 1.3.0(5)
+//             Alpha 1.4.0(6)
 
 import SwiftUI
 
@@ -30,8 +31,8 @@ struct ContentView: View {
         ZStack {
             ZStack(alignment: .bottom) {
                 MapView(station: nil, contentVM: contentVM)
-                    .ignoresSafeArea()
                     .loading(isRefleshing: contentVM.shouldShowLoadingIndicator)
+                    .ignoresSafeArea()
                 HStack(alignment: .bottom) {
                     currentSpeedText
                     Spacer()
