@@ -12,9 +12,7 @@
 
 import SwiftUI
 
-//バージョン情報
 let appVersion = Bundle.main.infoDictionary!["CFBundleShortVersionString"] as! String
-//ビルド情報
 let appBuildNum = Bundle.main.infoDictionary!["CFBundleVersion"] as! String
 
 struct ContentView: View {
@@ -23,38 +21,39 @@ struct ContentView: View {
     
     @StateObject var locationManager = LocationManager()
     
-    @State private var shouldShowSheet: Bool = true
+    @State private var shouldShowSearchResultView: Bool = true
     
     private let screenHeight: CGFloat = UIScreen.main.bounds.height
     @State private var sheetHeight: CGFloat = 0
     
     var body: some View {
         ZStack {
-            MapView(station: nil, contentVM: contentVM)
-                .ignoresSafeArea()
+            ZStack(alignment: .bottom) {
+                MapView(station: nil, contentVM: contentVM)
+                    .ignoresSafeArea()
+                    .loading(isRefleshing: contentVM.shouldShowLoadingIndicator)
+                HStack(alignment: .bottom) {
+                    currentSpeedText
+                    Spacer()
+                    moveToCurrentLocationButton
+                }
+                .padding(.horizontal, 10)
+                //offsetの値が小さくなるほどボタンの位置は上へ動く
+                //sheetHeight: 画面下端からsheetHeightの分だけ上へ
+                //15: sheetの上端からの移動分
+                .offset(y:  -(sheetHeight + 15) )
+            }
             VStack {
                 HStack {
-                    Spacer()
                     infoButton
                         .padding(.horizontal, 10)
+                    Spacer()
                 }
                 Spacer()
             }
-            HStack(alignment: .bottom) {
-                currentSpeedText
-                Spacer()
-                moveToCurrentLocationButton
-            }
-            .padding(.horizontal, 10)
-            //offsetの初期値は画面中央かつ、offsetの値が小さくなるほどボタンの位置は上へ動く
-            //screenHeight/2: 画面下端の座標を求める
-            //-sheetHeight: 画面下端からsheetHeightの分だけ上へ
-            //-85: sheetの上端から85だけ上へ
-            .offset(y:  screenHeight/2 - sheetHeight - 85 )
             Image(systemName: "plus.viewfinder")
-                .loading(isRefleshing: contentVM.shouldShowLoadingIndicator)
         }
-        .sheet(isPresented: $shouldShowSheet) {
+        .sheet(isPresented: $shouldShowSearchResultView) { //常にtrue
             GeometryReader { geometry in
                 SearchResultView(contentVM: contentVM)
                     .presentationDetents([ //sheetのサイズを指定
@@ -64,9 +63,9 @@ struct ContentView: View {
                     ])
                     .presentationBackgroundInteraction(.enabled) //sheetの背景ビューの操作を許可
                     .interactiveDismissDisabled() //Dismissを制限
-                    .onChange(of: geometry.size.height) { _ in
-                        if geometry.size.height < screenHeight/2 { //sheetが画面サイズの半分を超えたらsheetHeightを更新しない
-                            sheetHeight = geometry.size.height
+                    .onChange(of: geometry.size.height) { height in
+                        if height < screenHeight/2 { //sheetが画面サイズの半分を超えたらsheetHeightを更新しない
+                            self.sheetHeight = height
                         }
                     }
             }
@@ -115,7 +114,7 @@ private extension ContentView {
             contentVM.addressOfSpecifiedLocation.postalCode = "-"
             contentVM.addressOfSpecifiedLocation.adress = "Version \(appVersion)(\(appBuildNum))"
         }) {
-            Image(systemName: "info.circle")
+            Image(systemName: "line.3.horizontal")
         }
         .padding(10)
         .background(Color(UIColor.secondarySystemBackground))
