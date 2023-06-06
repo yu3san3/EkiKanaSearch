@@ -7,9 +7,9 @@
 //  2023/05/29 Alpha 1.0.0(1)
 //             Alpha 1.0.1(2)
 //             Alpha 1.1.0(3)
-//             Alpha 1.2.0(4)
-//             Alpha 1.3.0(5)
-//             Alpha 1.4.0(6)
+//          31 Alpha 1.2.0(4)
+//       06/01 Alpha 1.3.0(5)
+//          04 Alpha 1.4.0(6)
 
 import SwiftUI
 
